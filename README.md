@@ -34,4 +34,4 @@ Currently bridging the gap between **Scientific Computing** and **DevOps** (Dock
 
 ---
 
-[<img src="https://img.shields.io/badge/LinkedIn-Connect-blue?style=for-the-badge&logo=linkedin">](https://www.linkedin.com/in/michal-roubalik-4a86bb239)
+[<img src="https://img.shields.io/badge/LinkedIn-Connect-blue?style=for-the-badge&logo=linkedin">](https://www.linkedin.com/in/michal-roubalik/)
