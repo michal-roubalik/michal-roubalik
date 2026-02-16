@@ -2,7 +2,7 @@
 
 **Quant Developer | Mathematical Optimization (MILP) | PhD in Power Engineering**
 
-I specialize in building high-performance optimization engines and data pipelines for the energy sector. My work focuses on translating complex mathematical formulations (MILP, ODE/PDE) into production-grade software using **Python** and **C++**.
+I specialize in building high-performance optimization engines and data pipelines for the energy and financial sectors. My work focuses on translating complex mathematical formulations (MILP, Stochastic Modeling, ODE/PDE) into production-grade software using **Python** and **C++**.
 
 Currently bridging the gap between **Scientific Computing** and **DevOps** (Docker, OpenShift).
 
@@ -10,27 +10,48 @@ Currently bridging the gap between **Scientific Computing** and **DevOps** (Dock
 
 ### 🛠️ Core Engineering Stack
 * **Languages:** Python (Advanced), C++, SQL
-* **Scientific:** NumPy, SciPy, Pandas, Dask, PuLP (MILP)
-* **Infrastructure:** Docker, Kubernetes/OpenShift, CI/CD (GitHub Actions)
+* **Quant & Math:** NumPy, SciPy, Pandas, PyMC, Scikit-learn, XGBoost
+* **Optimization:** PuLP (MILP), CVaR Constraints, Dynamic Programming
+* **Infrastructure:** Docker, Kubernetes/OpenShift, CI/CD (GitHub Actions), Parquet/Snappy
 
 ---
 
-### 🚀 Selected Projects
+### 🚀 Quantitative Research
 
-#### ⚡ [Volt-Optimizer: BESS Arbitrage Framework](https://github.com/michal-roubalik/Volt-Optimizer)
-* **What:** A MILP-based dispatch engine for Battery Energy Storage Systems (BESS) that optimizes arbitrage against Day-Ahead market prices.
-* **Tech:** Python (PuLP), FastAPI, Docker, Plotly.js.
-* **Key Feature:** Solves high-dimensional constraints (efficiency losses, degradation) while streaming real-time solver telemetry to a frontend.
+#### 📈 [OptiAlpha: Bayesian Stochastic Portfolio Optimization](https://github.com/michal-roubalik/OptiAlpha)
+![Status](https://img.shields.io/badge/Status-Research_Prototype-orange?style=flat-square)
+* **What:** A framework for constructing **Market Neutral** portfolios by bridging probabilistic modeling with constrained optimization. It generates alpha distributions rather than point estimates to manage tail risk.
+* **Methodology:**
+    * **Alpha Generation:** Analytical Bayesian Linear Regression (`BayesianRidge`) on rolling momentum signals.
+    * **Optimization:** Stochastic MILP solver maximizing expected alpha subject to **CVaR (95%)** constraints.
+* **Key Result:** Achieves robust risk-adjusted returns by dynamically shifting exposure between Long/Short based on posterior uncertainty width.
+* **Tech:** `yfinance`, `PyMC`, `PuLP`, `BayesianRidge`.
 
-#### 📡 [SignalParallel: Multiprocessing Benchmark](https://github.com/michal-roubalik/SignalParallel)
-* **What:** A signal processing pipeline designed to benchmark Python's `ProcessPoolExecutor` overhead on Windows.
-* **Key Finding:** Identified the "2-second initialization tax," proving parallelization is only efficient for signal batches >500s.
-* **Tech:** Python Multiprocessing, SciPy Signal.
+#### 📊 [LOB-Alpha-ML: High-Frequency Order Book Forecasting](https://github.com/michal-roubalik/LOB-Alpha-ML)
+![Status](https://img.shields.io/badge/Status-ML_Research-blue?style=flat-square)
+* **What:** An event-driven research framework predicting directional price movements in crypto markets using **Limit Order Book (LOB)** microstructure features.
+* **Microstructure Theory:**
+    * **Order Book Imbalance (OBI):** $OBI_t = (V^b_t - V^a_t) / (V^b_t + V^a_t)$
+    * **Micro-Price:** Volume-weighted price estimates that adjust for liquidity asymmetries.
+* **Key Result:** A weighted **XGBoost** classifier validated via Walk-Forward splitting demonstrated a statistically significant predictive edge over random walk benchmarks.
+* **Tech:** `XGBoost`, `Parquet` (Snappy), `Pandas`.
 
-#### 🌊 [NumSolv-PDE: Finite Difference Solver](https://github.com/michal-roubalik/pdeNumSolv)
-* **What:** A numerical solver for Parabolic, Hyperbolic, and Elliptic partial differential equations.
-* **Tech:** Python, NumPy.
-* **Status:** Prototype focusing on Dirichlet/Neumann boundary conditions.
+---
+
+### ⚡ Engineering & Optimization
+
+#### 🔋 [Volt-Optimizer: BESS Arbitrage Framework](https://github.com/michal-roubalik/Volt-Optimizer)
+[![Live Demo](https://img.shields.io/badge/Render-Live_Demo-00d1b2?style=flat-square&logo=render)](https://volt-frontend-f95q.onrender.com/)
+* **What:** A full-stack MILP dispatch engine for Battery Energy Storage Systems (BESS) that optimizes arbitrage against Day-Ahead market prices and local solar generation.
+* **Architecture:** Microservices pattern with **NDJSON streaming** for real-time solver telemetry.
+* **Key Feature:** Solves high-dimensional constraints (round-trip efficiency $\eta$, degradation) in real-time.
+* **Tech:** `FastAPI`, `Docker`, `PuLP`, `Plotly.js`.
+
+#### 📡 [SignalParallel: High-Throughput Processing Engine](https://github.com/michal-roubalik/SignalParallel)
+![Status](https://img.shields.io/badge/Status-Complete-green?style=flat-square)
+* **What:** A benchmarking pipeline for parallel signal processing (FFT, Butterworth filtering) designed to measure Python's multiprocessing overhead.
+* **Key Finding:** Identified the **"Windows Tax"**—a ~2.0s fixed startup cost for process pools. Parallelization only yields efficiency gains for signal batches exceeding **500 seconds** in duration.
+* **Tech:** `Multiprocessing`, `SciPy Signal`, `Welch’s Method`.
 
 ---
 
